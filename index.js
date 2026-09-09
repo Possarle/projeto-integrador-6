@@ -8,12 +8,12 @@ const produtos = [
   { id: 2, nome: "Mouse", preco: 120 }
 ];
 
-// GET /produtos - retorna todos os produtos
+// GET /produtos
 app.get("/produtos", (req, res) => {
   res.status(200).json(produtos);
 });
 
-// GET /produtos/:id - retorna um produto pelo ID
+// GET /produtos/:id
 app.get("/produtos/:id", (req, res) => {
   const id = Number(req.params.id);
   const produto = produtos.find((produto) => produto.id === id);
@@ -25,7 +25,7 @@ app.get("/produtos/:id", (req, res) => {
   res.status(200).json(produto);
 });
 
-// POST /produtos - cadastra um novo produto
+// POST /produtos
 app.post("/produtos", (req, res) => {
   const { nome, preco } = req.body;
 
@@ -45,6 +45,7 @@ app.post("/produtos", (req, res) => {
   res.status(201).json(novoProduto);
 });
 
+// Rota não encontrada
 app.use((req, res) => {
   res.status(404).json({ erro: "Rota não encontrada" });
 });
